@@ -4,7 +4,7 @@ This is a plugin for [Logseq](https://logseq.com/) to check grammar and spelling
 
 > ⚠️ **developing**: this plugin is still under development. It is not ready for production use.
 
-![marketplace in developer](./resources/screenshot-01.png)
+![marketplace in developer](resources/screenshot-01.png)
 
 ## Develop
 

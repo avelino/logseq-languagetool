@@ -10,7 +10,7 @@
   },
   "main": "resources/index.html",
   "logseq": {
-    "icon": "./logo.png",
+    "icon": "./resources/logo.png",
     "id": "logseq-languagetool"
   },
   "scripts": {

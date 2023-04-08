@@ -1,0 +1,15 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/logseq/plugin" "src/test" "src/dev"]
+
+ :dependencies
+ [[lambdaisland/fetch "1.3.74"]
+  [funcool/promesa "10.0.594"]]
+
+ :dev-http {8080 "./dist"}
+ :nrepl    {:port 8702}
+ :builds
+ {:app
+  {:target :browser
+   :output-dir "./dist"
+   :modules {:main {:init-fn languagetool.core/init}}}}}

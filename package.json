@@ -1,0 +1,20 @@
+{
+  "name": "logseq-languagetool",
+  "version": "0.0.1",
+  "private": true,
+  "author": "avelino",
+  "license": "MIT",
+  "devDependencies": {
+    "@logseq/libs": "^0.0.14",
+    "shadow-cljs": "2.22.10"
+  },
+  "main": "resources/index.html",
+  "logseq": {
+    "icon": "./logo.png",
+    "id": "logseq-languagetool"
+  },
+  "scripts": {
+    "watch": "npx shadow-cljs watch app",
+    "release": "npx shadow-cljs release app"
+  }
+}

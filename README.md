@@ -8,7 +8,7 @@ This is a plugin for [Logseq](https://logseq.com/) to check grammar and spelling
 
 ## Develop
 
-``` shell
+```sh
 yarn
 yarn watch
 ```
@@ -19,10 +19,10 @@ yarn watch
 
 ### Connect to the repl
 
-Check https://shadow-cljs.github.io/docs/UsersGuide.html#cider.
+* [Cider user guide](https://shadow-cljs.github.io/docs/UsersGuide.html#cider)
 
 ## Release
 
-``` shell
+```sh
 yarn release
 ```

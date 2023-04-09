@@ -12,4 +12,4 @@
  {:app
   {:target :browser
    :output-dir "./dist"
-   :modules {:main {:init-fn languagetool.core/init}}}}}
+   :modules {:main {:init-fn languagetool.core/-init}}}}}

@@ -5,10 +5,10 @@
   "author": "avelino",
   "license": "MIT",
   "devDependencies": {
-    "@logseq/libs": "^0.0.14",
-    "shadow-cljs": "2.22.10"
+    "shadow-cljs": "2.22.10",
+    "yarn": "1.22.19"
   },
-  "main": "resources/index.html",
+  "main": "./resources/index.html",
   "logseq": {
     "icon": "./resources/logo.png",
     "id": "logseq-languagetool"

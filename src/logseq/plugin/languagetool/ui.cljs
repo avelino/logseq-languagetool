@@ -6,7 +6,7 @@
  "toolbar"
  (clj->js
   {:key "open-languagetool"
-   :template (str "<a class=\"button\" data-on-click=\"controlGrammarly\" data-rect>"
+   :template (str "<a class=\"button\" data-on-click=\"control-languagetool\" data-rect>"
                   "<i class=\"ti " trigger-icon-name "\"></i>"
                   "</a>")}))
 
@@ -32,4 +32,5 @@
                                  ":before { color: "
                                  disable-color "; }"))))
 
-(defn create-model [] {:controlLanguageTool control-languagetool})
+(defn create-model []
+  #js {:control-languagetool control-languagetool})

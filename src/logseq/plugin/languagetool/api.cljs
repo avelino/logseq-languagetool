@@ -3,9 +3,10 @@
    https://languagetool.org/http-api/"
   (:require [lambdaisland.fetch :as fetch]
             [promesa.core :as p]
-            [clojure.walk :as walk]))
+            [clojure.walk :as walk]
+            [languagetool.logseq :as logseq]))
 
-(def languagetool-host (get (js->clj js/logseq.settings) "languagetool-host"))
+(def languagetool-host (get (js->clj logseq/settings) "languagetool-host"))
 
 (defn check
   "Check a text"

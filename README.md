@@ -1,28 +1,27 @@
 # Logseq LanguageTool Plugin
 
-This is a plugin for [Logseq](https://logseq.com/) to check grammar and spelling using [LanguageeTool](https://languagetool.org/).
+This is a [Logseq](https://logseq.com/) plugin to check grammar and spelling using [LanguageeTool](https://languagetool.org/).
+
+Written in [ClojureScript](https://clojurescript.org/) with [shadow-cljs](https://github.com/thheller/shadow-cljs) and [babashka (`bb`)](https://github.com/babashka/babashka) as the main tooling.
 
 > ⚠️ **developing**: this plugin is still under development. It is not ready for production use.
 
 ![marketplace in developer](https://raw.githubusercontent.com/avelino/logseq-languagetool/main/resources/screenshot-01.png)
 
-## Develop
+## development
+
+run in development mode *(watch)*:
 
 ```sh
-yarn
-yarn watch
+bb run dev
 ```
 
 * Enable developer mode in Logseq
 * Click "Load unpacked plugin" to open this folder
 * Click the "Reload" button to refresh latest changes
 
-### Connect to the repl
-
-* [Cider user guide](https://shadow-cljs.github.io/docs/UsersGuide.html#cider)
-
 ## Release
 
 ```sh
-yarn release
+bb run build
 ```

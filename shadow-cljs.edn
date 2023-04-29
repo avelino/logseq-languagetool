@@ -3,13 +3,32 @@
  ["src/logseq/plugin" "src/test" "src/dev"]
 
  :dependencies
- [[lambdaisland/fetch "1.3.74"]
-  [funcool/promesa "10.0.594"]]
+ [[binaryage/devtools "1.0.6"]
+  [djblue/portal "0.36.0"]
+  [lambdaisland/fetch "1.3.74"]
+  [funcool/promesa "10.0.594"]
+  [run.avelino/logseq-libs "0.1-0.0.14"]]
 
  :dev-http {8080 "./dist"}
- :nrepl    {:port 8702}
+ :nrepl {:port 8702
+         :middleware [portal.nrepl/wrap-portal]
+         :init-ns languagetool.core}
+ :compiler-options {:infer-externs      :auto
+                    :output-feature-set :es-next
+                    :source-map         true
+                    :source-map-detail-level :all
+                    :warnings           {:fn-deprecated false}}
+
  :builds
- {:app
+ {:plugin
   {:target :browser
-   :output-dir "./dist"
-   :modules {:main {:init-fn languagetool.core/-init}}}}}
+   :module-loader true
+   :output-dir "dist"
+   :modules  {:index {:init-fn languagetool.core/-init}}
+   :build-hooks [(portal.shadow.remote/hook)]
+   :devtools {:preloads [devtools.preload
+                         portal.setup]
+              :repl-pprint true
+              :watch-dir "dist"} ; Doesn't work for Logseq dev mode. Have to reload plugin.
+   :dev {}
+   :release {:compiler-options {:optimizations :advanced}}}}}

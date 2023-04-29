@@ -1,0 +1,16 @@
+{:tasks
+ {:requires ([cheshire.core :as json])
+  :init (do (defn x [& cmds] (doseq [cmd cmds] (shell cmd)))
+            (def v (-> (slurp "package.json") (json/parse-string true) :version)))
+  prep       (x "rm -fr dist out",
+                "mkdir dist",
+                "cp -R resources/. dist/")
+  watch      (x "yarn",
+                "npx shadow-cljs watch :plugin")
+  -dev       {:depends [watch]}
+  dev        {:depends [prep]
+              :task (run '-dev {:parallel true})}
+  outdated   {:doc "Check if there's any oudated dependencies."
+              :task (x "clojure -M:outdated")}
+  build-cljs (x "yarn", "npx shadow-cljs release :plugin")
+  build      {:depends [prep build-cljs]}}}

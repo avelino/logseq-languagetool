@@ -4,9 +4,9 @@
   (:require [lambdaisland.fetch :as fetch]
             [promesa.core :as p]
             [clojure.walk :as walk]
-            [languagetool.logseq :as logseq]))
+            [logseq-libs.settings :as setting]))
 
-(def languagetool-host (get (js->clj logseq/settings) "languagetool-host"))
+(def languagetool-host (get (js->clj setting/settings) "languagetool-host"))
 
 (defn check
   "Check a text"

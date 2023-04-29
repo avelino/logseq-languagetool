@@ -7,7 +7,7 @@
   [djblue/portal "0.36.0"]
   [lambdaisland/fetch "1.3.74"]
   [funcool/promesa "10.0.594"]
-  [run.avelino/logseq-libs "0.1.2-0.0.14"]]
+  [run.avelino/logseq-libs "0.1.3-0.0.14"]]
 
  :dev-http {8080 "./dist"}
  :nrepl {:port 8702

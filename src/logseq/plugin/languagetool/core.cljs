@@ -1,17 +1,19 @@
 (ns languagetool.core
-  (:require [languagetool.logseq :as logseq]
+  (:require ["@logseq/libs"]
             [languagetool.ui :as ui]
             [languagetool.config :as config]
             [languagetool.observer :as ob]
             [languagetool.api :as api]
+            [logseq-libs.editor :as editor]
+            [logseq-libs.app :as app]
             [promesa.core :as p]))
 
 (defn callback
   "process block change event"
   [mutations observer]
-  (p/let [current-block (logseq/get-current-block)
+  (p/let [current-block (editor/get-current-block)
           block-uuid (aget current-block "uuid")
-          block-content (logseq/get-editing-block-content)]
+          block-content (editor/get-editing-block-content)]
     (when (not-empty block-content)
       (prn :content block-content :uuid block-uuid))))
 
@@ -22,7 +24,7 @@
 
   (js/logseq.provideStyle ".cp__sidebar-help-btn { bottom: 1rem; position: fixed; right: 5rem;}")
   (js/logseq.provideModel ui/create-model)
-  (logseq/app-show-msg "Hello from LanguageTool plugin in CLJS!"))
+  (app/show-msg "Hello from LanguageTool plugin in CLJS!"))
 
 (defn -init []
   (-> (js/logseq.useSettingsSchema (clj->js config/schema))

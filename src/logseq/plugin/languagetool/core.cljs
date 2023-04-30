@@ -15,7 +15,9 @@
           block-uuid (aget current-block "uuid")
           block-content (editor/get-editing-block-content)]
     (when (not-empty block-content)
-      (prn :content block-content :uuid block-uuid))))
+      (p/let [api-ret (api/check block-content)]
+        (prn :api-check api-ret)
+        (prn :content block-content :uuid block-uuid)))))
 
 (defn main []
   (.observe (ob/load callback)

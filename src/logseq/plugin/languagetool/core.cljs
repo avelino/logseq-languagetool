@@ -4,6 +4,7 @@
             [languagetool.config :as config]
             [languagetool.observer :as ob]
             [languagetool.api :as api]
+            [languagetool.block :as block]
             [logseq-libs.editor :as editor]
             [logseq-libs.app :as app]
             [promesa.core :as p]))
@@ -13,10 +14,11 @@
   [mutations observer]
   (p/let [current-block (editor/get-current-block)
           block-uuid (aget current-block "uuid")
-          block-content (editor/get-editing-block-content)]
-    (when (not-empty block-content)
+          block-content (editor/get-editing-block-content)
+          api-check? (block/control block-uuid block-content)]
+    (when (and (not-empty block-content)
+               (true? api-check?))
       (p/let [api-ret (api/check block-content)]
-        (prn :api-check api-ret)
         (prn :content block-content :uuid block-uuid)))))
 
 (defn main []

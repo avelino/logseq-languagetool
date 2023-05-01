@@ -27,7 +27,7 @@
                                  :subtree true})
 
   (js/logseq.provideStyle ".cp__sidebar-help-btn { bottom: 1rem; position: fixed; right: 5rem;}")
-  (js/logseq.provideModel ui/create-model)
+  (js/logseq.provideModel (ui/create-model))
   (app/show-msg "Hello from LanguageTool plugin in CLJS!"))
 
 (defn -init []

@@ -5,8 +5,8 @@
   "author": "avelino",
   "license": "MIT",
   "devDependencies": {
-    "shadow-cljs": "2.23.3",
-    "yarn": "1.22.19"
+    "shadow-cljs": "2.28.9",
+    "yarn": "1.22.22"
   },
   "main": "./dist/index.html",
   "logseq": {
@@ -16,6 +16,6 @@
     "main": "./dist/index.html"
   },
   "dependencies": {
-    "@logseq/libs": "^0.0.14"
+    "@logseq/libs": "^0.0.17"
   }
 }

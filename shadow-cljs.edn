@@ -28,6 +28,8 @@
    :build-hooks [(portal.shadow.remote/hook)]
    :devtools {:preloads [devtools.preload
                          portal.setup]
+              :after-load portal.ui.core/reload!
+              :use-document-host false
               :repl-pprint true
               :watch-dir "dist"} ; Doesn't work for Logseq dev mode. Have to reload plugin.
    :dev {}

@@ -1,6 +1,5 @@
 (ns languagetool.config
-  (:require [languagetool.config :as config]
-            [languagetool.api :as api]
+  (:require [languagetool.api :as api]
             [promesa.core :as p]))
 
 (def default-languagetool-clientid "abc")

@@ -10,8 +10,9 @@
     (println :translate translate)
     (app/show-msg (str "Translation: " translate))))
 
-
 (defn -init []
-  (-> (js/logseq.useSettingsSchema (clj->js config/schema))
-      (.ready main)
-      (.catch js/console.error)))
+  (p/let [langs (config/languagetool-languages-dynamic)]
+    (-> (js/logseq.useSettingsSchema
+         (clj->js (config/schema langs)))
+        (.ready main)
+        (.catch js/console.error))))

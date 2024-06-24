@@ -11,8 +11,8 @@
     (app/show-msg (str "Translation: " translate))))
 
 (defn -init []
-  (p/let [langs (config/languagetool-languages-dynamic)]
-    (-> (js/logseq.useSettingsSchema
-         (clj->js (config/schema langs)))
+  (p/let [langs-call (api/languages)
+          langs (clj->js (merge ["auto"] (mapv :longCode langs-call)))]
+    (-> (js/logseq.useSettingsSchema (clj->js (config/schema langs)))
         (.ready main)
         (.catch js/console.error))))

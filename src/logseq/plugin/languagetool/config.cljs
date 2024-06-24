@@ -1,15 +1,13 @@
 (ns languagetool.config
-  (:require [languagetool.api :as api]
-            [promesa.core :as p]))
+  (:require ["@logseq/libs"]))
 
-(def default-languagetool-clientid "abc")
 (def default-languagetool-host "https://api.languagetoolplus.com/v2")
-
-(defn languagetool-languages-dynamic []
-  "Get a list of supported languages"
-  (p/let [langs (api/languages)
-          ret (mapv :longCode langs)]
-    (clj->js (merge ["auto"] ret))))
+(defn get-setting
+  "Get `setting-key` from Logseq settings"
+  [setting-key]
+  (get (js->clj js/logseq.settings)
+       (str (name setting-key))
+       (if (= setting-key :languagetool-host) default-languagetool-host "")))
 
 (defn schema
   "Schema for the Logseq settings"
@@ -19,11 +17,16 @@
     :title "LanguageTool Enabled?",
     :description "You can deactivate languageetool, it is ON by default",
     :default true}
-   {:key "languagetool-clientid",
+   {:key "languagetool-username",
     :type "string",
-    :title "LanguageTool Client ID",
-    :description "Please use the Client ID from LanguageTool's API console",
-    :default default-languagetool-clientid}
+    :title "LanguageTool Username",
+    :description "Please use the Username from LanguageTool's API console",
+    :default ""}
+   {:key "languagetool-apikey",
+    :type "string",
+    :title "LanguageTool API KEY",
+    :description "Please use the API KEY from LanguageTool's API console",
+    :default ""}
    {:key "languagetool-host",
     :type "string",
     :title "LanguageTool Host Server",
@@ -36,4 +39,3 @@
     :title "Language Support",
     :description "Select the main language",
     :default "auto"}])
-    

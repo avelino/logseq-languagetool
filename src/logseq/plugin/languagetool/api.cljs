@@ -2,8 +2,8 @@
   "Communication package with the LanguageTool API
    https://languagetoolplus.com/http-api/"
   (:require [clojure.walk :as walk]
-            [languagetool.config :refer [get-setting]]
             [lambdaisland.fetch :as fetch]
+            [languagetool.config :refer [get-setting]]
             [promesa.core :as p]))
 
 (defn check
@@ -15,9 +15,7 @@
                   :accept :json
                   :body {:text text
                          :language lang
-                         ;; "top.ice8700@avelino.run"
                          :username (get-setting :languagetool-username)
-                         ;; "pit-RgGgjuiZILhc"
                          :apiKey (get-setting :languagetool-apikey)
                          :enabledOnly enabledOnly}}]
     (-> (fetch/post url params)
